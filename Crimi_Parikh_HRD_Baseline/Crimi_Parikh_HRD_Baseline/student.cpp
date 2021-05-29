@@ -20,7 +20,7 @@ void student::honor_roll_eligibility_checker()
 
     //course_names();
     //course_grades();
-    mean_grade();
+    //mean_grade();
     discipline_issue_method();
 
     
@@ -29,7 +29,7 @@ void student::honor_roll_eligibility_checker()
 
     // Checking if mean is above 90, user taking more than 5 courses and there is no discipline
     // issue
-    if (student::average >= 90 && courses_int >= 5 && discipline_issue == "no")
+    if (student::average >= 90 && student::numberOfCourses >= 5 && discipline_issue == "no")
     {
         honor_roll_eligbility = true;
     }
@@ -44,7 +44,7 @@ void student::honor_roll_eligibility_checker()
     cout << endl << endl;
     cout << full_name << endl;
     printf("%-20s%-5s\n", "Class", "Grade");
-    for (int i = 0; i < courses_int; i++) {
+    for (int i = 0; i < student::numberOfCourses; i++) {
         string first = classes[i];
         int second = grades[i];
         string second_as_string;
@@ -52,7 +52,7 @@ void student::honor_roll_eligibility_checker()
         printf("%-20s%-5d \n", first.c_str(), second);
     }
     cout << endl;
-    cout << endl << "Average: " << mean << endl;
+    cout << endl << "Average: " << student::average << endl;
 
     cout << "Disciplinary Infraction: " << discipline_issue << endl;
 
@@ -73,28 +73,31 @@ void student::collectingUserData()
     student::userName();
     
     // Method to see how many courses user is enrolled in as well as checkign to make sure they fit parametrs
-    student::courses_enrolled_in();
+    //student::courses_enrolled_in();
     
 }
 
 // Private Methods
 void student::getGrades(void)
 {
+    std::cout << std::endl;
+    std::cout << std::endl;
+
     int MAX_GRADE = 120; //setting the max grade
 
-    if (courses.size() > 0) {
+    if (student::classes.size() > 0) {
         //print only if the user acutally entered 
         std::cout << "Please enter your grades in integer form (minimum: 0, maximum: " << MAX_GRADE << "): " << std::endl;
     }
 
     //loop through the number of courses and ask the user for a grade for each class
-    for (int i = 0; i < courses.size(); i++) {
+    for (int i = 0; i < student::classes.size(); i++) {
         //defining variables
         float input; //making the variable a string variable just in case the user tries to enter a string value instead of a number
 
         //looping until the user enters a valid grade number
         while (true) {
-            std::cout << "Enter grade for " << courses[i] << ": ";
+            std::cout << "Enter grade for " << student::classes[i] << ": ";
             std::cin >> input;
 
             if (!std::cin.fail() && ceil(input) == input /*to check if the number entered is an integer, the ceiling of the number should be the same as the number*/) {
