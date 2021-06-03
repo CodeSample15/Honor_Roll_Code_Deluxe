@@ -18,12 +18,18 @@
     <ClInclude Include="student.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="fileSave.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="HonorRoll1.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="student.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="fileSave.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>

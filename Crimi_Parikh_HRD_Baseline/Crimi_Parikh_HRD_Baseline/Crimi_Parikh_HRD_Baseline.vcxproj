@@ -139,9 +139,11 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClInclude Include="fileSave.h" />
     <ClInclude Include="student.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="fileSave.cpp" />
     <ClCompile Include="HonorRoll1.cpp" />
     <ClCompile Include="student.cpp" />
   </ItemGroup>
