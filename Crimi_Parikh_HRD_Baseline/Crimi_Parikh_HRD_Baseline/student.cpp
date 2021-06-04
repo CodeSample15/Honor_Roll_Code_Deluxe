@@ -393,3 +393,25 @@ void student::discipline_issue_method()
         discipline_issue = "no";
     }
 }
+
+//for other programs to access private data
+string student::getName()
+{
+    return full_name;
+}
+
+void student::getClassAndGradeData(vector<string>& classNames, vector<int>& classGrades)
+{
+    classNames = classes;
+    classGrades = grades;
+}
+
+double student::getAverage() 
+{
+    return mean_pre_rounded;
+}
+
+bool student::getDisciplineIssue()
+{
+    return discipline_issue == "yes";
+}

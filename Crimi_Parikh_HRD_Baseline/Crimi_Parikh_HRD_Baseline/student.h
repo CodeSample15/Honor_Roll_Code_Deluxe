@@ -24,13 +24,12 @@ class student
     int MAX_GRADE = 120;
 
     // course name array
-
     std::vector<std::string> classes;
 
     // grades array
     std::vector<int> grades;
 
-    int numberOfCourses=0;
+    int numberOfCourses = 0;
     double average;
 
     // mean of all courses
@@ -44,19 +43,22 @@ class student
     std::string discipline_issue;
     
 public:
-void collectingUserData();
-void honor_roll_eligibility_checker();
-student();
+    student();
+    void collectingUserData();
+    void honor_roll_eligibility_checker();
+
+    //data for other files to access
+    std::string getName();
+    void getClassAndGradeData(std::vector<std::string>& classNames, std::vector<int>& classGrades);
+    double getAverage();
+    bool getDisciplineIssue();
 private:
     void getGrades();
     void getCourses();
-void userName();
-void courses_enrolled_in();
-void course_names();
-void course_grades();
-void mean_grade();
-void discipline_issue_method();
-
-
-
+    void userName();
+    void courses_enrolled_in();
+    void course_names();
+    void course_grades();
+    void mean_grade();
+    void discipline_issue_method();
 };
