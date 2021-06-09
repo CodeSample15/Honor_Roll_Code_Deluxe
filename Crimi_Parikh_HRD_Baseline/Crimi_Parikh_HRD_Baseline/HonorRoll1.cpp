@@ -6,10 +6,13 @@
  */
 
 #include "student.h"
+#include "fileSave.h"
 using namespace std;
 
 int main()
 {
     student Student1;
     Student1.honor_roll_eligibility_checker();
+    fileSave File;
+    File.saveStudentData(Student1);
 }
