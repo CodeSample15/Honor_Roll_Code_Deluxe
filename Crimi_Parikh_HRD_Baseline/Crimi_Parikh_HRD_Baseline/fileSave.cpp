@@ -69,7 +69,7 @@ void fileSave::saveStudentData(student& data)
 	fout.close();
 }
 
-string fileSave::getStudentData(int studentNum, vector<string>& classes, vector<double>& grades, double& average, bool& disciplineIssue)
+string fileSave::getStudentData(int studentNum, vector<string>& classes, vector<int>& grades, double& average, bool& disciplineIssue)
 {
 	//opening the file in read mode
 	ifstream fin;
@@ -84,67 +84,69 @@ string fileSave::getStudentData(int studentNum, vector<string>& classes, vector<
 	bool foundStudent = false;
 	string studentName = ""; //for recording the name of the found student
 
-	while (!fin.eof()) {
-		getline(fin, studentName); //scan one line down in the file
+	getline(fin, studentName); //reading the first line of the file
 
-		if (currentStudent == studentNum) {
-			getline(fin, studentName); //recording the student's name
-			foundStudent = true;
-			break;
-		}
-		else {
-			string currentLine = "";
-			currentStudent++;
-			do {
-				getline(fin, currentLine);
-			} while (currentLine != "-" && !fin.eof());
-		}
-	}
-
-
-	//returns empty data if the studentNum is invalid
-	//else the method returns the name of the student and fills the two vectors with the appropriate data
-	if (foundStudent) {
-		//record the data
-		string classNumber;
-		getline(fin, classNumber);
-		int numberOfClasses = stoi(classNumber);
-
-		//getting the classnames
-		classes.clear();
-		grades.clear();
-		string lineData = "";
-
-		for (int i = 0; i < numberOfClasses; i++) {
-			getline(fin, lineData);
-			classes.push_back(lineData);
+	if (fin.is_open())
+	{
+		while (!fin.eof()) {
+			if (currentStudent == studentNum) {
+				getline(fin, studentName); //recording the student's name
+				foundStudent = true;
+				break;
+			}
+			else {
+				string currentLine = "";
+				currentStudent++;
+				do {
+					getline(fin, currentLine);
+				} while (currentLine != "-" && !fin.eof());
+			}
 		}
 
-		//getting the grades
-		int grade = 0;
-		for (int i = 0; i < numberOfClasses; i++) {
-			getline(fin, lineData);
-			grade = stoi(lineData); //converting the string data to an integer
-			grades.push_back(grade);
+
+		//returns empty data if the studentNum is invalid
+		//else the method returns the name of the student and fills the two vectors with the appropriate data
+		if (foundStudent) {
+			//record the data
+			string classNumber;
+			getline(fin, classNumber); //reading how many classes the student took
+			int numberOfClasses = stoi(classNumber);
+
+			//getting the classnames
+			classes.clear();
+			grades.clear();
+			string lineData = "";
+			int grade = 0;
+
+			for (int i = 0; i < numberOfClasses; i++) {
+				//class names
+				getline(fin, lineData);
+				classes.push_back(lineData);
+
+				//grades
+				getline(fin, lineData);
+				grade = stoi(lineData); //converting the string data to an integer
+				grades.push_back(grade);
+			}
+
+			//getting the average and if there is a discipline issue with the student
+
+			//average
+			string averageString = "";
+			getline(fin, averageString);
+			average = stod(averageString);
+
+			//disipline issue
+			string issue = "";
+			getline(fin, issue);
+			disciplineIssue = issue == "1";
+
+			//closing the file
+			fin.close();
+
+			//return the name of the student found
+			return studentName;
 		}
-
-		//getting the average and if there is a discipline issue with the student
-
-		//average
-		string averageString = "";
-		getline(fin, averageString);
-		average = stod(averageString);
-
-		//disipline issue
-		string issue = "";
-		getline(fin, issue);
-		disciplineIssue = issue == "1";
-		
-		//closing the file
-		fin.close();
-		
-		//return the name of the student found
-		return studentName;
 	}
 	
 	return "";

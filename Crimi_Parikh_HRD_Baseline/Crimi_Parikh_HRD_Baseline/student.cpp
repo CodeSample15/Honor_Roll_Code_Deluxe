@@ -408,7 +408,7 @@ void student::getClassAndGradeData(vector<string>& classNames, vector<int>& clas
 
 double student::getAverage() 
 {
-    return mean_pre_rounded;
+    return (double)mean;
 }
 
 bool student::getDisciplineIssue()
