@@ -140,6 +140,9 @@ string fileSave::getStudentData(int studentNum, vector<string>& classes, vector<
 		getline(fin, issue);
 		disciplineIssue = issue == "1";
 		
+		//closing the file
+		fin.close();
+		
 		//return the name of the student found
 		return studentName;
 	}
