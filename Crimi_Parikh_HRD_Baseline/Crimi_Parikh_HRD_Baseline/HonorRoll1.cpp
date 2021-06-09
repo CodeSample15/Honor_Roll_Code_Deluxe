@@ -11,8 +11,15 @@ using namespace std;
 
 int main()
 {
-    student Student1;
-    Student1.honor_roll_eligibility_checker();
-    fileSave File;
-    File.saveStudentData(Student1);
+    cout << "How many students would you like to enter?\n";
+    // to be data validated
+    int amount = 0;
+    cin >> amount;
+    for (int i = 0; i < amount; i++)
+    {
+        student Student1;
+        Student1.honor_roll_eligibility_checker();
+        fileSave File;
+        File.saveStudentData(Student1);
+    }
 }
