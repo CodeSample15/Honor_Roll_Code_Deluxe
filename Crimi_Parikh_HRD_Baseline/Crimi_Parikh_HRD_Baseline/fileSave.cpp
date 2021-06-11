@@ -80,7 +80,7 @@ string fileSave::getStudentData(int studentNum, vector<string>& classes, vector<
 		//finds the right number student (if there is one) and reads the data from the file
 	
 	//for keeping track what student the program is currently reading
-	int currentStudent = 1;
+	int currentStudent = 0;
 	bool foundStudent = false;
 	string studentName = ""; //for recording the name of the found student
 

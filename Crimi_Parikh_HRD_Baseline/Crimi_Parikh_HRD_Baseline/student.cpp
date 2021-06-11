@@ -1,6 +1,8 @@
 ﻿#include "student.h"
 #include <cstdlib>
 #include <ctime>
+
+#include "fileSave.h"
 using namespace std;
 
 // Constructor Method
@@ -12,21 +14,34 @@ student::student()
 
 void student::honor_roll_eligibility_checker()
 {
-    // running methods to get name, and amount of classes and make sure they fit requirements
-    collectingUserData();
-    // Running methods to get course names, grades, overall grade, and generate discipline issue with 5% chance
-    getCourses(); //Luke's code
-    getGrades(); //Luke's code
+    cout << "Would you like to load student data from a file, or import it into the console now?\nSay console to type it in, otherwise the system will load it from a file.\n";
+    string userChoice = " ";
+    getline (cin,userChoice);
+    if (userChoice == "console" || userChoice == "Console")
+    {
+        // running methods to get name, and amount of classes and make sure they fit requirements
+        collectingUserData();
+        // Running methods to get course names, grades, overall grade, and generate discipline issue with 5% chance
+        getCourses(); //Luke's code
+        getGrades(); //Luke's code
 
-    //course_names();
-    //course_grades();
-    //mean_grade();
-    discipline_issue_method();
+        //course_names();
+        //course_grades();
+        //mean_grade();
+        discipline_issue_method();
 
     
-    // Checking for honor roll eligbiity
-    bool honor_roll_eligbility = false;
-
+        // Checking for honor roll eligbiity
+        honor_roll_eligbility = false;
+    }
+    else
+    {
+        cout << "Which student would you like to load in?\n";
+        int index = 0;
+        // Asking user for which student they want
+        
+        fileSave::getStudentData()
+    }
     // Checking if mean is above 90, user taking more than 5 courses and there is no discipline
     // issue
     if (student::average >= 90 && student::numberOfCourses >= 5 && discipline_issue == "no")

@@ -26,7 +26,7 @@ int main()
         File.saveStudentData(Student1);
     }
 
-    /* Loading data from a file: 
+    /* Order for loading data from file: 
     fileSave saver;
     vector<string> names;
     vector<int> grades;

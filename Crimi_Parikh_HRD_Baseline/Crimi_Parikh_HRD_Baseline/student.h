@@ -41,6 +41,8 @@ class student
 
     // discipline issue?
     std::string discipline_issue;
+    // boolean honor roll elgibility
+    bool honor_roll_eligbility = false;
     
 public:
     student();
