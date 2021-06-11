@@ -39,8 +39,6 @@ void student::honor_roll_eligibility_checker()
         cout << "Which student would you like to load in?\n";
         int index = 0;
         // Asking user for which student they want
-        
-        fileSave::getStudentData()
     }
     // Checking if mean is above 90, user taking more than 5 courses and there is no discipline
     // issue
@@ -52,7 +50,6 @@ void student::honor_roll_eligibility_checker()
     {
         honor_roll_eligbility = false;
     }
-
 
     // Based on the results above and the methods, will print user name, class and grades
     // and overall average grade. Then prints out if eligiable for honor roll or not

@@ -3,6 +3,9 @@
  *17 February 2021 - 18 February 2021
  *Honor Roll OOP
  *Extra Thing: If user enters a name with a length less than 1, option is given to correct it
+ * 
+ * Known issues: Menu system isn't finished
+ * Known issues: User can only enter one student
  */
 
 #include <vector>
@@ -14,17 +17,16 @@ using namespace std;
 
 int main()
 {
-    cout << "How many students would you like to enter?\n";
+    /*
+    cout << "Enter the number of students: ";
     // to be data validated
     int amount = 0;
     cin >> amount;
-    for (int i = 0; i < amount; i++)
-    {
-        student Student1;
-        Student1.honor_roll_eligibility_checker();
-        fileSave File;
-        File.saveStudentData(Student1);
-    }
+    */
+    student Student1;
+    Student1.honor_roll_eligibility_checker();
+    fileSave File;
+    File.saveStudentData(Student1);
 
     //give the user the menu
     cout << "Menu:" << endl;
