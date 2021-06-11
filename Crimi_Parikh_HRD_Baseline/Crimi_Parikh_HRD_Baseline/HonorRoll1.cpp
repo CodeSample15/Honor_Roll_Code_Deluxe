@@ -26,6 +26,20 @@ int main()
         File.saveStudentData(Student1);
     }
 
+    //give the user the menu
+    cout << "Menu:" << endl;
+    cout << "1. Show output for each student" << endl;
+    cout << "2. Show output for a particular student" << endl;
+    cout << "3. Show name and GPA for all students" << endl;
+    cout << "4. Show GPA for a certain student" << endl;
+    cout << "5. Show list of students with disciplinary issue" << endl;
+
+    //ask the user for their choice
+
+
+    //do different actions depending on their choice
+
+
     /* Order for loading data from file: 
     fileSave saver;
     vector<string> names;
