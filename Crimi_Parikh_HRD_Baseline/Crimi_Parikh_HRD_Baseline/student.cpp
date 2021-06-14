@@ -1,6 +1,7 @@
 ﻿#include "student.h"
 #include <cstdlib>
 #include <ctime>
+#include "GetData.h"
 
 #include "fileSave.h"
 using namespace std;
@@ -36,10 +37,12 @@ void student::honor_roll_eligibility_checker()
     }
     else
     {
-        cout << "Which student would you like to load in?\n";
-        int index = 0;
-        // Asking user for which student they want
+        cout << "Enter index of which student you want to load?\n";
+        // need to also make sure no negatives are allowed
+        int index = getValidInt(index);
+        fileSave::getStudentData(index,classes,grades,average,discipline_issue);
     }
+
     // Checking if mean is above 90, user taking more than 5 courses and there is no discipline
     // issue
     if (student::average >= 90 && student::numberOfCourses >= 5 && discipline_issue == "no")

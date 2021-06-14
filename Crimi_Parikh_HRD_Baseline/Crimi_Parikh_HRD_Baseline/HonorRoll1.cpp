@@ -23,11 +23,6 @@ int main()
     int amount = 0;
     cin >> amount;
     */
-    student Student1;
-    Student1.honor_roll_eligibility_checker();
-    fileSave File;
-    File.saveStudentData(Student1);
-
     //give the user the menu
     cout << "Menu:" << endl;
     cout << "1. Show output for each student" << endl;
@@ -36,6 +31,14 @@ int main()
     cout << "4. Show GPA for a certain student" << endl;
     cout << "5. Show list of students with disciplinary issue" << endl;
 
+    // wouldn't this run only if user wants to enter data
+    // otherwise honor roll shouldn't run, no?
+    student Student1;
+    Student1.honor_roll_eligibility_checker();
+    fileSave File;
+    File.saveStudentData(Student1);
+
+    
     //ask the user for their choice
 
 
