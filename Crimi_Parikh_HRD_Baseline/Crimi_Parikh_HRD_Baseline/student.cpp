@@ -1,6 +1,7 @@
 ﻿#include "student.h"
 #include <cstdlib>
 #include <ctime>
+#include <iomanip>
 #include "GetData.h"
 
 #include "fileSave.h"
@@ -10,6 +11,15 @@ using namespace std;
 student::student()
 {
     
+}
+
+student::student(string name, vector<string> classes, vector<int> grades, double average, bool disciplineIssue)
+{
+    student::full_name = name;
+    student::classes = classes;
+    student::grades = grades;
+    student::mean_pre_rounded = average;
+    student::discipline_issue = disciplineIssue;
 }
 // Public methods
 
@@ -40,7 +50,7 @@ void student::honor_roll_eligibility_checker()
         cout << "Enter index of which student you want to load?\n";
         // need to also make sure no negatives are allowed
         int index = getValidInt(index);
-        fileSave::getStudentData(index,classes,grades,average,discipline_issue);
+        //fileSave::getStudentData(index,classes,grades,average,discipline_issue);
     }
 
     // Checking if mean is above 90, user taking more than 5 courses and there is no discipline
@@ -409,6 +419,25 @@ void student::discipline_issue_method()
     }
 }
 
+void student::printData()
+{
+    cout << endl << endl;
+    cout << full_name << endl;
+    printf("%-20s%-5s\n", "Class", "Grade");
+    for (int i = 0; i < student::classes.size(); i++) {
+        string first = student::classes[i];
+        int second = student::grades[i];
+        string second_as_string;
+        second_as_string = second;
+        printf("%-20s%-5d \n", first.c_str(), second);
+    }
+    cout << endl;
+    cout << endl << "Average: " << student::average << endl;
+
+    cout << "Disciplinary Infraction: " << discipline_issue << endl;
+
+}
+
 //for other programs to access private data
 string student::getName()
 {
@@ -423,6 +452,7 @@ void student::getClassAndGradeData(vector<string>& classNames, vector<int>& clas
 
 double student::getAverage() 
 {
+    //TODO: make this the non-rounded mean
     return (double)mean;
 }
 

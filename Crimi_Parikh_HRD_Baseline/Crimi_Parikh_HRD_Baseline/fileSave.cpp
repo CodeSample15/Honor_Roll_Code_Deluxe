@@ -78,13 +78,13 @@ string fileSave::getStudentData(int studentNum, vector<string>& classes, vector<
 	/*Logic for the get student data algorithm*/
 	//loop through the file and search for the data of the correct student
 		//finds the right number student (if there is one) and reads the data from the file
-	
+
 	//for keeping track what student the program is currently reading
 	int currentStudent = 0;
 	bool foundStudent = false;
 	string studentName = ""; //for recording the name of the found student
 
-	getline(fin, studentName); //reading the first line of the file
+	getline(fin, studentName); //reading the second line of the file
 
 	if (fin.is_open())
 	{
@@ -150,4 +150,31 @@ string fileSave::getStudentData(int studentNum, vector<string>& classes, vector<
 	}
 	
 	return "";
+}
+
+int fileSave::numberOfStudents() 
+{
+	//open the students file
+	ifstream fin;
+	fin.open(fileSave::filePath);
+
+	//count how many '-' symbols there are
+	if (fin.is_open()) {
+		int count = 0;
+		string nextInput;
+
+		while (!fin.eof())
+		{
+			getline(fin, nextInput);
+			
+			if (nextInput == "-") {
+				count++;
+			}
+		}
+
+		//return the count
+		return count;
+	}
+	
+	return 0;
 }

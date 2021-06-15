@@ -46,6 +46,7 @@ class student
     
 public:
     student();
+    student(std::string name, std::vector<std::string> classes, std::vector<int> grades, double average, bool disciplineIssue);
     void collectingUserData();
     void honor_roll_eligibility_checker();
 
@@ -54,6 +55,7 @@ public:
     void getClassAndGradeData(std::vector<std::string>& classNames, std::vector<int>& classGrades);
     double getAverage();
     bool getDisciplineIssue();
+    void printData();
 private:
     void getGrades();
     void getCourses();

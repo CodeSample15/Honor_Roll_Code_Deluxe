@@ -23,27 +23,73 @@ int main()
     int amount = 0;
     cin >> amount;
     */
+    //TODO: Make algorithm to take data for multiple students
+
     //give the user the menu
     cout << "Menu:" << endl;
-    cout << "1. Show output for each student" << endl;
-    cout << "2. Show output for a particular student" << endl;
-    cout << "3. Show name and GPA for all students" << endl;
-    cout << "4. Show GPA for a certain student" << endl;
-    cout << "5. Show list of students with disciplinary issue" << endl;
+    cout << "A. Show output for each student" << endl;
+    cout << "B. Show output for a particular student" << endl;
+    cout << "C. Show name and GPA for all students" << endl;
+    cout << "D. Show GPA for a certain student" << endl;
+    cout << "E. Show list of students with disciplinary issue" << endl;
 
-    // wouldn't this run only if user wants to enter data
-    // otherwise honor roll shouldn't run, no?
-    student Student1;
-    Student1.honor_roll_eligibility_checker();
-    fileSave File;
-    File.saveStudentData(Student1);
+    //get input from the user
+    bool dataGood = false;
+    char firstLetter = ' ';
 
-    
-    //ask the user for their choice
+    do {
+        cout << endl;
+        cout << "Enter slection: ";
+        string userChoice = "";
+        getline(cin, userChoice);
+
+        //data validation
+
+        //take the first letter that the user entered and treat it as a character
+        firstLetter = toupper(userChoice[0]); //convert to uppercase for easy comparison
+
+        if (firstLetter == 'A' || firstLetter == 'B' || firstLetter == 'C' || firstLetter == 'D' || firstLetter == 'E') {
+            dataGood = true; //break the loop, user entered good data
+        }
+        else {
+            //continue the loop, user entered bad data
+            cout << "Please enter a valid option!" << endl;
+        }
+    } while (!dataGood);
+
+    //variables for user options
+    fileSave saver;
+    int numberOfStudents = saver.numberOfStudents();
+    vector<string> names;
+    vector<int> grades;
+    double average;
+    bool disciplineIssue;
 
 
-    //do different actions depending on their choice
+    //do different actions depending on their cahoice
+    switch (firstLetter) 
+    {
+        case 'A':
+            for(int i=0; i<numberOfStudents; i++)
+            {
+                string name = saver.getStudentData(i, names, grades, average, disciplineIssue);
+                student print(name, names, grades, average, disciplineIssue);
+                print.printData();
+            }
+            break;
 
+        case 'B':
+            break;
+
+        case 'C':
+            break;
+
+        case 'D':
+            break;
+
+        case 'E':
+            break;
+    }
 
     /* Order for loading data from file: 
     fileSave saver;

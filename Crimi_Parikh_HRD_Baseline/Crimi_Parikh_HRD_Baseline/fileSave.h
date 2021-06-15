@@ -17,7 +17,7 @@ public:
 	//methods
 	void saveStudentData(student &data);
 	string getStudentData(int studentNum, vector<string>& classes, vector<int>& grades, double& average, bool& disciplineIssue); //returns the full name of the student, as well as filling the classes and grades vectors with the appropriate student data
-
+	int numberOfStudents();
 private:
 	string filePath;
 };
