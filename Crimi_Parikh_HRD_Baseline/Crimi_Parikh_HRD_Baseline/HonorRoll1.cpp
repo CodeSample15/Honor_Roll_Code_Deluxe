@@ -84,23 +84,45 @@ int main()
     vector<int> grades;
     double average;
     bool disciplineIssue;
-
+    
 
     // KNOWN ISSUES: At this time, only Case A works. The other cases do not work.
-    
-    //do different actions depending on their cahoice
+    // variables for switch statement
+    int indexNumber = 0;
+    string name = " ";
+    student printbrugger;
+    //do different actions depending on their choice
     switch (firstLetter) 
     {
         case 'A':
             for(int i=0; i<numberOfStudents; i++)
             {
-                string name = saver.getStudentData(i, names, grades, average, disciplineIssue);
+                name = saver.getStudentData(i, names, grades, average, disciplineIssue);
                 student print(name, names, grades, average, disciplineIssue);
                 print.printData();
             }
             break;
-
+        // switch statement for menu option B
+        // printing an specific student
         case 'B':
+                cout << "Which student would you like to know the output about? Enter their index number\n";
+                name = saver.getStudentData(indexNumber, names, grades, average, disciplineIssue);
+                student print(name, names, grades, average, disciplineIssue);
+                print.printData();
+            
+            // do while loop for valid int since getValidInt causes error in the other switch statments
+            // have to make for loop that runs once since switch statements are sus
+            /*for (int i = 0; i ++; i < 1)
+            {
+                do
+                {
+                    cin >> indexNumber;
+                }while(cin.fail());
+                name = saver.getStudentData(indexNumber, names, grades, average, disciplineIssue);
+                student printbrugger(name, names, grades, average, disciplineIssue);
+                printbrugger.printData();
+            }
+            */
             break;
 
         case 'C':
@@ -110,6 +132,8 @@ int main()
             break;
 
         case 'E':
+            break;
+        default:
             break;
     }
 
