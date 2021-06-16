@@ -20,15 +20,18 @@ int main()
 {
     fileSave saver;
 
-    // to be data validated
+    // data validated to ask user for number of students
     int amount = 0;
     do {
         cout << "Enter the number of students: ";
     } while (!getValidInt(amount));
     //TODO: Make algorithm to take data for multiple students
 
+    // initilizing gradebook object
     student gradeBook;
 
+    // running honor roll eigibility method
+    // saving results to file
     for (int i = 0; i < amount; i++) {
         gradeBook.honor_roll_eligibility_checker();
         saver.saveStudentData(gradeBook);
@@ -53,9 +56,11 @@ int main()
     bool dataGood = false;
     char firstLetter = ' ';
 
+    // while the data isn't good (except for first time run), the user is asked to choose their menu option and the first character is taken (A,B,C,D,E) is choosen
+    // When this happens, they are allowed to leave the loop
     do {
         cout << endl;
-        cout << "Enter slection: ";
+        cout << "Enter selection: ";
         string userChoice = "";
         getline(cin, userChoice);
 
@@ -81,6 +86,8 @@ int main()
     bool disciplineIssue;
 
 
+    // KNOWN ISSUES: At this time, only Case A works. The other cases do not work.
+    
     //do different actions depending on their cahoice
     switch (firstLetter) 
     {
