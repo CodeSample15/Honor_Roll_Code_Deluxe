@@ -95,20 +95,25 @@ int main()
     switch (firstLetter) 
     {
         case 'A':
-            for(int i=0; i<numberOfStudents; i++)
             {
-                name = saver.getStudentData(i, names, grades, average, disciplineIssue);
-                student print(name, names, grades, average, disciplineIssue);
-                print.printData();
+                for(int i=0; i<numberOfStudents; i++)
+                {
+                    name = saver.getStudentData(i, names, grades, average, disciplineIssue);
+                    student print(name, names, grades, average, disciplineIssue);
+                    print.printData();
+                }
             }
             break;
         // switch statement for menu option B
         // printing an specific student
         case 'B':
+            {
                 cout << "Which student would you like to know the output about? Enter their index number\n";
                 name = saver.getStudentData(indexNumber, names, grades, average, disciplineIssue);
                 student print(name, names, grades, average, disciplineIssue);
-                print.printData();
+                print.printData();  
+            }
+                
             
             // do while loop for valid int since getValidInt causes error in the other switch statments
             // have to make for loop that runs once since switch statements are sus
@@ -128,7 +133,7 @@ int main()
         case 'C':
             break;
 
-        case 'D':
+        case 'D':   
             break;
 
         case 'E':
