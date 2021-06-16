@@ -90,7 +90,6 @@ int main()
     // variables for switch statement
     int indexNumber = 0;
     string name = " ";
-    student printbrugger;
     //do different actions depending on their choice
     switch (firstLetter) 
     {
