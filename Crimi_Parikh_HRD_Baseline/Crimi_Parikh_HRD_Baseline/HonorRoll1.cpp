@@ -13,19 +13,35 @@
 #include <iostream>
 #include "student.h"
 #include "fileSave.h"
+#include "GetData.h"
 using namespace std;
 
 int main()
 {
-    /*
-    cout << "Enter the number of students: ";
+    fileSave saver;
+
     // to be data validated
     int amount = 0;
-    cin >> amount;
-    */
+    do {
+        cout << "Enter the number of students: ";
+    } while (!getValidInt(amount));
     //TODO: Make algorithm to take data for multiple students
 
+    student gradeBook;
+
+    for (int i = 0; i < amount; i++) {
+        gradeBook.honor_roll_eligibility_checker();
+        saver.saveStudentData(gradeBook);
+
+        cout<<endl;
+        cout<<endl; //some spacing in between each student
+    }
+
     //give the user the menu
+    cout << endl;
+    cout << endl;
+    cout << endl; //some spacing for easier to read output
+
     cout << "Menu:" << endl;
     cout << "A. Show output for each student" << endl;
     cout << "B. Show output for a particular student" << endl;
@@ -58,7 +74,6 @@ int main()
     } while (!dataGood);
 
     //variables for user options
-    fileSave saver;
     int numberOfStudents = saver.numberOfStudents();
     vector<string> names;
     vector<int> grades;

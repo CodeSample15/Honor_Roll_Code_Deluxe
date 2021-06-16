@@ -25,9 +25,13 @@ student::student(string name, vector<string> classes, vector<int> grades, double
 
 void student::honor_roll_eligibility_checker()
 {
-    cout << "Would you like to load student data from a file, or import it into the console now?\nSay console to type it in, otherwise the system will load it from a file.\n";
+    cout << "Would you like to load student data from a file, or import it into the console now?\nSay console to type it in, otherwise the system will load it from a file." << endl;
     string userChoice = " ";
-    getline (cin,userChoice);
+    do {
+        getline(cin, userChoice);
+    } while (userChoice == "");
+
+
     if (userChoice == "console" || userChoice == "Console")
     {
         // running methods to get name, and amount of classes and make sure they fit requirements
@@ -47,7 +51,7 @@ void student::honor_roll_eligibility_checker()
     }
     else
     {
-        cout << "Enter index of which student you want to load?\n";
+        cout << "Enter index of which student you want to load: ";
         // need to also make sure no negatives are allowed
         int index = getValidInt(index);
         //fileSave::getStudentData(index,classes,grades,average,discipline_issue);
