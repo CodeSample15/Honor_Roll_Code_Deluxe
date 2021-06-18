@@ -36,6 +36,11 @@ void student::honor_roll_eligibility_checker()
     {
         // running methods to get name, and amount of classes and make sure they fit requirements
         collectingUserData();
+
+        //clear vectors
+        student::classes.clear();
+        student::grades.clear();
+
         // Running methods to get course names, grades, overall grade, and generate discipline issue with 5% chance
         getCourses(); //Luke's code
         getGrades(); //Luke's code
@@ -197,10 +202,8 @@ void student::getCourses(void)
 
     for (int i = 0; i < numCourses; i++) {
         //getting user input
-        do {
-            std::cout << "Enter name of course #" << (i + 1) << ": ";
-            std::getline(std::cin, courseName);
-        } while (courseName.length() == 0 || courseName == " ");
+        std::cout << "Enter name of course #" << (i + 1) << ": ";
+        std::getline(std::cin, courseName);
 
         //checking to see how long the name is
         if (courseName.length() > 20) {
